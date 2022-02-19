@@ -1,0 +1,17 @@
+service: yaml-plugin-issue
+
+frameworkVersion: "^3.2.1"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 128
+  timeout: 120
+  layers:
+    - { Ref: SharedLambdaLayer }
+
+functions:
+  check:
+    handler: handler.check
+    layers:
+      - { Ref: SharedLambdaLayer }
